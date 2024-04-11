@@ -3,7 +3,7 @@
 namespace Laltu\InertiaUi;
 
 use Illuminate\Support\ServiceProvider;
-use Laltu\LaravelUi\Commands\InstallPresetCommand;
+use Laltu\InertiaUi\Commands\InstallPresetCommand;
 
 class InertiaUiServiceProvider extends ServiceProvider
 {
