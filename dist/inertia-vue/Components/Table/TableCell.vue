@@ -1,9 +1,9 @@
 <script setup>
+import {useTableCellClasses} from '@/Components/Table/useTableCellClasses.js'
 
-import { useTableCellClasses } from '@/Components/Core/Table/useTableCellClasses'
-
-const { tableCellClasses } = useTableCellClasses()
+const {tableCellClasses} = useTableCellClasses()
 </script>
+
 <template>
     <td :class="tableCellClasses">
         <slot></slot>

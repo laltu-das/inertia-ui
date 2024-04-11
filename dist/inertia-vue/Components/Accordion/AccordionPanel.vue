@@ -1,32 +1,38 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
-import { useAccordionState } from '@/Components/Core/Accordion/useAccordionState'
-import { nanoid } from 'nanoid'
+import {computed, onMounted, ref} from 'vue'
+import {useAccordionState} from '@/Components/Accordion/useAccordionState.js'
+import {nanoid} from 'nanoid'
 
-const { accordionsStates } = useAccordionState()
+const {accordionsStates} = useAccordionState()
+
 
 const panelId = nanoid()
 const panel = ref()
 const accordionId = computed(() => {
-  if (panel.value) return panel.value.parentElement.dataset.accordionId
-  return null
+    if (panel.value) return panel.value.parentElement.dataset.accordionId
+    return null
 })
 
 const accordionState = computed(() => {
-  return accordionsStates[accordionId.value]
+    return accordionsStates[accordionId.value]
 })
 
 onMounted(() => {
-  const panelsCount = Object.keys(accordionState?.value?.panels)?.length
-  accordionState.value.panels[panelId] = {
-    id: panelId,
-    order: panelsCount,
-    isVisible: (accordionState.value.openFirstItem && panelsCount === 0) ?? false,
-  }
+    const panelsCount = Object.keys(accordionState?.value?.panels)?.length
+    accordionState.value.panels[panelId] = {
+        id: panelId,
+        order: panelsCount,
+        isVisible: !panelsCount,
+    }
 })
 </script>
+
 <template>
-    <div :data-panel-id="panelId" ref="panel">
+    <div ref="panel" :data-panel-id="panelId">
         <slot v-if="accordionId"></slot>
     </div>
 </template>
+
+<style scoped>
+
+</style>

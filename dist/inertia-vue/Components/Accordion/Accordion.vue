@@ -1,18 +1,24 @@
 <script setup>
-import { nanoid } from 'nanoid'
-import { useAccordionState } from '@/Components/Core/Accordion/useAccordionState'
+import {nanoid} from 'nanoid'
+import {useAccordionState} from '@/Components/Accordion/useAccordionState.js'
 
-const props = withDefaults(defineProps(), {
-  alwaysOpen: false,
-  openFirstItem: true,
-  flush: false,
+const props = defineProps({
+    alwaysOpen: {
+        type: Boolean,
+        default: false,
+    },
+    flush: {
+        type: Boolean,
+        default: false,
+    },
 })
 
 const accordionId = nanoid()
-useAccordionState(accordionId, { ...props })
+useAccordionState(accordionId, {...props})
 </script>
+
 <template>
-    <div :data-accordion-id="accordionId">
-        <slot />
+    <div :data-accordion-id="accordionId" class="vp-raw">
+        <slot/>
     </div>
 </template>

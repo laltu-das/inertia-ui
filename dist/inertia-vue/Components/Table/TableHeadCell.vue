@@ -1,10 +1,10 @@
 <script setup>
-import { useTableHeadCellClasses } from '@/Components/Core/Table/useTableHeadCellClasses'
+import {useTableHeadCellClasses} from '@/Components/Table/useTableHeadCellClasses.js'
 
-const { tableHeadCellClasses } = useTableHeadCellClasses()
+const {tableHeadCellClasses} = useTableHeadCellClasses()
 </script>
 <template>
-    <th scope="col" :class="tableHeadCellClasses">
+    <th :class="tableHeadCellClasses" scope="col">
         <slot></slot>
     </th>
 </template>

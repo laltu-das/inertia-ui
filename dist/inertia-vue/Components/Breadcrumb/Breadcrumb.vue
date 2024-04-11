@@ -1,20 +1,19 @@
 <script setup>
-import { toRefs } from 'vue'
-import { useBreadcrumbClasses } from '@/Components/Core/Breadcrumb/useBreadcrumbClasses'
+import {toRefs} from 'vue'
+import {useBreadcrumbClasses} from '@/Components/Breadcrumb/useBreadcrumbClasses.js'
 
 const props = defineProps({
-  solid: {
-    type: Boolean,
-    default: false,
-  },
+    solid: {
+        type: Boolean,
+        default: false,
+    },
 })
-
-const { breadcrumbWrapperClasses, breadcrumbClasses } = useBreadcrumbClasses(toRefs(props))
+const {breadcrumbWrapperClasses, breadcrumbClasses} = useBreadcrumbClasses(toRefs(props))
 </script>
 <template>
     <nav :class="breadcrumbWrapperClasses" aria-label="Breadcrumb">
         <ol :class="breadcrumbClasses">
-            <slot name="default" />
+            <slot name="default"/>
         </ol>
     </nav>
 </template>

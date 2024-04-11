@@ -4,12 +4,30 @@ import {onMounted, ref} from 'vue'
 const props = defineProps({
     pictures: {
         type: Array,
-        required: true,
-        validator(value) {
-            return value.every(picture =>
-                typeof picture.image === 'string' && typeof picture.name === 'string'
-            );
-        }
+        default() {
+            return [
+                {
+                    'src': 'https://flowbite.com/docs/images/carousel/carousel-1.svg',
+                    'alt': 'Picture 1',
+                },
+                {
+                    'src': 'https://flowbite.com/docs/images/carousel/carousel-2.svg',
+                    'alt': 'Picture 2',
+                },
+                {
+                    'src': 'https://flowbite.com/docs/images/carousel/carousel-3.svg',
+                    'alt': 'Picture 3',
+                },
+                {
+                    'src': 'https://flowbite.com/docs/images/carousel/carousel-3.svg',
+                    'alt': 'Picture 3',
+                },
+                {
+                    'src': 'https://flowbite.com/docs/images/carousel/carousel-3.svg',
+                    'alt': 'Picture 3',
+                },
+            ]
+        },
     },
     indicators: {
         type: Boolean,
@@ -79,30 +97,36 @@ onMounted(() => {
     }
 })
 </script>
+
 <template>
     <div class="relative">
         <!-- Carousel wrapper -->
-        <div class="relative sm:h-64 xl:h-80 2xl:h-96">
+        <div class="relative rounded-lg">
             <!-- Item 1 -->
-            <!--      duration-700 ease-in-out-->
-            <div v-for="(picture, index) in pictures"
-                 :key="index" :class="index === currentPicture ? 'z-30' : 'z-0'"
-                 class="absolute inset-0 -translate-y-0">
-                <img :alt="picture.name" :src="picture.image"
-                     class="h-full block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2">
+            <!-- duration-700 ease-in-out-->
+            <div class="flex gap-4">
+                <div v-for="(picture, index) in pictures" :key="index" class="w-1/4 border shadow p-3">
+                    <img :alt="picture.alt" :src="picture.src">
+                    <div class="text-center">
+                        <p class="text-base font-bold leading-5 mb-2 mt-2 px-2 line-clamp-3">60% off</p>
+                        <p class="text-sm font-normal leading-4 mb-2 opacity-100 text-[#818181]">Min. order - 499</p>
+                        <p class="text-sm leading-4 cursor-pointer">Know more</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <!-- Slider indicators -->
-        <div v-if="indicators" class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
-            <button v-for="(picture, index) in pictures" :key="index" :aria-label="'Slide ' + index"
-                    :class="index === currentPicture ? 'bg-white' : 'bg-white/50'" aria-current="false"
-                    class="w-3 h-3 rounded-full bg-white" type="button" @click.prevent="slideTo(index)">
 
-            </button>
-        </div>
+        <!-- Slider indicators -->
+        <!--        <div v-if="indicators" class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">-->
+        <!--            <button v-for="(picture, index) in pictures" :key="index" :aria-label="'Slide ' + index"-->
+        <!--                    :class="index === currentPicture ? 'bg-white' : 'bg-white/50'" aria-current="false"-->
+        <!--                    class="w-3 h-3 rounded-full bg-white" type="button" @click.prevent="slideTo(index)">-->
+        <!--            </button>-->
+        <!--        </div>-->
+
         <!-- Slider controls -->
         <button v-if="controls"
-                class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                class="flex absolute top-0 left-0 z-30 justify-center items-center h-full cursor-pointer group focus:outline-none"
                 data-carousel-prev
                 type="button"
                 @click.prevent="previousPicture">
@@ -118,7 +142,7 @@ onMounted(() => {
       </span>
         </button>
         <button v-if="controls"
-                class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+                class="flex absolute top-0 right-0 z-30 justify-center items-center h-full cursor-pointer group focus:outline-none"
                 data-carousel-next
                 type="button"
                 @click.prevent="nextPicture">
