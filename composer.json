@@ -1,0 +1,55 @@
+{
+    "name": "laltu/inertia-ui",
+    "description": "laravel inertia ui packages",
+    "keywords": [
+        "laltu",
+        "inertia-ui"
+    ],
+    "homepage": "https://github.com/laltu/inertia-ui",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "laltu das",
+            "email": "laltu.lspl@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "illuminate/support": "^11.0",
+        "inertiajs/inertia-laravel": "^1.0.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^9.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Laltu\\InertiaUi\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Laltu\\InertiaUi\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Laltu\\InertiaUi\\InertiaUiServiceProvider"
+            ],
+            "aliases": {
+                "InertiaUi": "Laltu\\InertiaUi\\InertiaUiFacade"
+            }
+        }
+    }
+}
