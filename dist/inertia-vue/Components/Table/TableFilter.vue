@@ -59,7 +59,7 @@
 </template>
 
 <script setup>
-import Dropdown from "@/Components/Dropdown.vue";
+import Dropdown from "../Dropdown/Dropdown.vue";
 
 defineProps({
     hasEnabledFilters: {

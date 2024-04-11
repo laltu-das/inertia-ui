@@ -1,5 +1,5 @@
 <script setup>
-import {useTableRowClasses} from '@/Components/Table/useTableRowClasses.js'
+import {useTableRowClasses} from 'useTableRowClasses.js'
 
 const {tableRowClasses} = useTableRowClasses()
 </script>

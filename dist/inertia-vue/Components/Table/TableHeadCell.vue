@@ -1,5 +1,5 @@
 <script setup>
-import {useTableHeadCellClasses} from '@/Components/Table/useTableHeadCellClasses.js'
+import {useTableHeadCellClasses} from 'useTableHeadCellClasses.js'
 
 const {tableHeadCellClasses} = useTableHeadCellClasses()
 </script>
