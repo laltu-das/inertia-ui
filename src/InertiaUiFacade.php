@@ -5,7 +5,7 @@ namespace Laltu\InertiaUi;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Laltu\InertiaUi\Skeleton\SkeletonClass
+ * @see \Laltu\InertiaUi\InertiaUi
  */
 class InertiaUiFacade extends Facade
 {
@@ -14,7 +14,7 @@ class InertiaUiFacade extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor()
+    protected static function getFacadeAccessor(): string
     {
         return 'inertia-ui';
     }
