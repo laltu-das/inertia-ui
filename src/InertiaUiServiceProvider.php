@@ -3,15 +3,21 @@
 namespace Laltu\InertiaUi;
 
 use Illuminate\Support\ServiceProvider;
+use Inertia\Inertia;
 use Laltu\InertiaUi\Commands\InstallPresetCommand;
+use Laltu\InertiaUi\Components\Modal\InertiaModal;
 
 class InertiaUiServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap the application services.
      */
-    public function boot()
+    public function boot(): void
     {
+        Inertia::macro('modal', function (string $component, array $props = []) {
+            return new InertiaModal($component, $props);
+        });
+
         /*
          * Optional methods to load your package assets
          */

@@ -33,7 +33,7 @@ class InstallPresetCommand extends Command implements PromptsForMissingInput
     protected function getArguments(): array
     {
         return [
-            ['framework', InputArgument::REQUIRED, 'The development stack that should be installed (react,vue)'],
+            ['framework', InputArgument::REQUIRED, 'The development stack that should be installed (inertia-ui-react,vue)'],
         ];
     }
 
@@ -52,7 +52,7 @@ class InstallPresetCommand extends Command implements PromptsForMissingInput
      */
     public function handle(): ?int
     {
-        // Get the specified stack (react, vue) from command argument
+        // Get the specified stack (inertia-ui-react, vue) from command argument
         $framework = $this->argument('framework');
 
         // Call appropriate installation method based on the specified stack
@@ -242,22 +242,22 @@ class InstallPresetCommand extends Command implements PromptsForMissingInput
     {
         // Update NPM packages for React stack
         $this->updateNodePackages(fn($packages) => [
-            '@headlessui/react' => '^1.4.2',
-            '@inertiajs/react' => '^1.0.0',
+            '@headlessui/inertia-ui-react' => '^1.4.2',
+            '@inertiajs/inertia-ui-react' => '^1.0.0',
             '@tailwindcss/forms' => '^0.5.3',
-            '@vitejs/plugin-react' => '^4.0.3',
+            '@vitejs/plugin-inertia-ui-react' => '^4.0.3',
             'autoprefixer' => '^10.4.12',
             'postcss' => '^8.4.18',
             'tailwindcss' => '^3.2.1',
-            'react' => '^18.2.0',
-            'react-dom' => '^18.2.0',
+            'inertia-ui-react' => '^18.2.0',
+            'inertia-ui-react-dom' => '^18.2.0',
         ]);
 
         // Ensure existence of required directories
         collect(['Components', 'Layouts'])->each(fn($directory) => (new Filesystem)->ensureDirectoryExists(resource_path("js/{$directory}")));
 
         // Copy React stub files to the resource directory
-        $this->copyDirectories('inertia-react' . ($this->option('stack') == 'typescript' ? '-ts' : ''), 'react');
+        $this->copyDirectories('inertia-inertia-ui-react' . ($this->option('stack') == 'typescript' ? '-ts' : ''), 'inertia-ui-react');
 
         // Install and build Node dependencies
         $this->installAndBuildNodeDependencies();
@@ -293,7 +293,7 @@ class InstallPresetCommand extends Command implements PromptsForMissingInput
     {
         $framework = $input->getArgument('framework');
 
-        if (in_array($framework, ['react', 'vue'])) {
+        if (in_array($framework, ['inertia-ui-react', 'vue'])) {
             $option = select(
                 label: 'Would you like any optional features?',
                 options: [
@@ -354,9 +354,9 @@ class InstallPresetCommand extends Command implements PromptsForMissingInput
     {
         return [
             'framework' => fn() => select(
-                label: 'The development stack that should be installed (react,vue)',
+                label: 'The development stack that should be installed (inertia-ui-react,vue)',
                 options: [
-                    'react' => 'react js',
+                    'inertia-ui-react' => 'inertia-ui-react js',
                     'vue' => 'vue js'
                 ],
                 scroll: 6,
