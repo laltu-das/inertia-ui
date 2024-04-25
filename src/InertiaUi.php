@@ -2,7 +2,20 @@
 
 namespace Laltu\InertiaUi;
 
-class InertiaUi
+use Illuminate\Support\Facades\Facade;
+
+/**
+ * @see \Laltu\InertiaUi\InertiaUiManager
+ */
+class InertiaUi extends Facade
 {
-    // Build your next great package.
+    /**
+     * Get the registered name of the component.
+     *
+     * @return string
+     */
+    protected static function getFacadeAccessor(): string
+    {
+        return InertiaUiManager::class;
+    }
 }

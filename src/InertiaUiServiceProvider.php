@@ -63,7 +63,7 @@ class InertiaUiServiceProvider extends ServiceProvider
 
         // Register the main class to use with the facade
         $this->app->singleton('inertia-ui', function () {
-            return new InertiaUi;
+            return new InertiaUiManager;
         });
     }
 }

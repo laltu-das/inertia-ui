@@ -48,7 +48,7 @@
                 "Laltu\\InertiaUi\\InertiaUiServiceProvider"
             ],
             "aliases": {
-                "InertiaUi": "Laltu\\InertiaUi\\InertiaUiFacade"
+                "InertiaUi": "InertiaUi"
             }
         }
     }
